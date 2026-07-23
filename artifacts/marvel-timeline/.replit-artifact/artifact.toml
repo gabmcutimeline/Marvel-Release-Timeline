@@ -1,0 +1,27 @@
+kind = "web"
+previewPath = "/"
+title = "Marvel Timeline"
+version = "1.0.0"
+id = "artifacts/marvel-timeline"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 25411
+
+[services.development]
+run = "pnpm --filter @workspace/marvel-timeline run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/marvel-timeline", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/marvel-timeline/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "25411"
+BASE_PATH = "/"
