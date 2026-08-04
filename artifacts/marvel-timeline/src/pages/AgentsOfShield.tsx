@@ -26,8 +26,8 @@ function InsertedMovieCard({ movie, onOpenInfo }: { movie: typeof marvelData[num
 }
 
 // Une ligne épisode, style Disney+
-function EpisodeRow({ season, episode, title, synopsis, duration, thumbnail }: { season: number; episode: number; title: string; synopsis?: string; duration?: string; thumbnail?: string }) {
-  const link = aosSeasonLinks[season];
+function EpisodeRow({ season, episode, title, synopsis, duration, thumbnail, streamingUrl }: { season: number; episode: number; title: string; synopsis?: string; duration?: string; thumbnail?: string; streamingUrl?: string }) {
+  const link = streamingUrl || aosSeasonLinks[season];
   return (
     <a
       href={link || '#'}
@@ -108,6 +108,7 @@ export default function AgentsOfShield() {
                   synopsis={item.synopsis}
                   duration={item.duration}
                   thumbnail={item.thumbnail}
+                  streamingUrl={item.streamingUrl}
                 />
               );
             }
