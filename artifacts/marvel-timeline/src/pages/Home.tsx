@@ -17,8 +17,8 @@ const LegendItem = ({color, label}: {color: string, label: string}) => (
 const Legend = () => (
   <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16 bg-card/30 p-6 sm:p-8 rounded-2xl border border-border shadow-lg">
     <div>
-      <h3 className="text-sm font-bold font-display uppercase tracking-widest mb-4 border-b border-border pb-2 text-white">Timeline MCU</h3>
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-3 gap-x-6 text-xs">
+      <h3 className="text-sm font-bold font-display uppercase tracking-widest mb-2 border-b border-border pb-2 text-white">Timeline MCU</h3>
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-3 gap-x-5 text-xs">
         <LegendItem color="bg-orange-500" label="Films Univers 616" />
         <LegendItem color="bg-cyan-500" label="Séries Multivers MCU" />
         <LegendItem color="bg-purple-500" label="Séries Univers 616" />
@@ -30,15 +30,15 @@ const Legend = () => (
       </div>
     </div>
     <div>
-      <h3 className="text-sm font-bold font-display uppercase tracking-widest mb-4 border-b border-border pb-2 text-white">Multiverse</h3>
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-3 gap-x-6 text-xs">
-        <LegendItem color="bg-green-500" label="Spider-Man Maguire" />
-        <LegendItem color="bg-slate-200" label="X-MEN UNIVERSE" />
-        <LegendItem color="bg-blue-500" label="Spider-Man Garfield" />
-        <LegendItem color="bg-slate-400" label="X-Men Animé" />
-        <LegendItem color="bg-orange-400" label="Spider-Man Animé" />
+      <h3 className="text-sm font-bold font-display uppercase tracking-widest mb-0 border- border-border pb-0 text-white"></h3>
+      <div className="grid grid-cols-0 sm:grid-cols-0 gap-y-2 gap-x-0 text-xs">
         <LegendItem color="" label="" />
-        <LegendItem color="bg-yellow-400" label="Sony's Spider-Man Universe" />
+        <LegendItem color="" label="" />
+        <LegendItem color="" label="" />
+        <LegendItem color="" label="" />
+        <LegendItem color="" label="" />
+        <LegendItem color="" label="" />
+        <LegendItem color="" label="" />
       </div>
     </div>
   </div>

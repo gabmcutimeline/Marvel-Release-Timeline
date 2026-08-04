@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { marvelData } from '../data/marvel-data';
 import { aosTimeline, aosSeasonLinks } from '../data/aos-data';
 import { Header } from '../components/Header';
@@ -26,7 +26,7 @@ function InsertedMovieCard({ movie, onOpenInfo }: { movie: typeof marvelData[num
 }
 
 // Une ligne épisode, style Disney+
-function EpisodeRow({ season, episode, title, synopsis, duration, thumbnail }: { season: number; episode: number; title: string; synopsis?: string; duration?: string; thumbnail?: string }) {
+function EpisodeRow({ season, episode, title, synopsis, duration, thumbnail,  }: { season: number; episode: number; title: string; synopsis?: string; duration?: string; thumbnail?: string }) {
   const link = aosSeasonLinks[season];
   return (
     <a
@@ -56,7 +56,7 @@ function EpisodeRow({ season, episode, title, synopsis, duration, thumbnail }: {
 
 export default function AgentsOfShield() {
   const [selectedMovie, setSelectedMovie] = React.useState<typeof marvelData[number] | null>(null);
-  useEffect(() => {
+  React.useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 

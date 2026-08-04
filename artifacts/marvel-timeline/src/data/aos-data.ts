@@ -5,31 +5,31 @@ export type AosTimelineItem =
  // id d'une entrée existante dans marvel-data.ts
 
 export const aosTimeline: AosTimelineItem[] = [
-  { type: 'episode', season: 1, episode: 1, title: "Des hommes et des dieux", synopsis: "Le SHIELD recherche un homme aux pouvoirs extraordinaires.", duration: "45 min" },
-  { type: 'episode', season: 1, episode: 2, title: "Otages en plein ciel", synopsis: "L'équipe est sur la piste d'un objet d'origine inconnue.", duration: "42 min" },
-  { type: 'episode', season: 1, episode: 3, title: "Gravitonium", synopsis: "Le SHIELD part à la recherche d'un chercheur qui a été enlevé.", duration: "44 min" },
-  { type: 'episode', season: 1, episode: 4, title: "Dans l'œil de l'espion", synopsis: "Coulson et son équipe sont sur la piste d'une incroyable voleuse.", duration: "43 min" },
-  { type: 'episode', season: 1, episode: 5, title: "Scorch", synopsis: "L'équipe traque un homme au pouvoir dangereux.", duration: "43 min" },
-  { type: 'episode', season: 1, episode: 6, title: "Virus alien", synopsis: "Le SHIELD traque un tueur dont les victimes flottent dans l'air.", duration: "42 min" },
-  { type: 'episode', season: 1, episode: 7, title: "Roulette russe", synopsis: "Des secrets menacent la vie de l'équipe de Coulson.", duration: "43 min" },
-  { type: 'episode', season: 1, episode: 8, title: "Le dernier guerrier", synopsis: "Un objet asgardien menace un des membres de l'équipe.", duration: "43 min" },
+  { type: 'episode', season: 1, episode: 1, title: "Des hommes et des dieux", synopsis: "Le SHIELD recherche un homme aux pouvoirs extraordinaires.", duration: "45 min", streamingUrl: "https://www.disneyplus.com/fr-fr/play/4cf1b621-9af1-40d2-989d-3b1df555b062", thumbnail: "/posters/s1e1.webp" },
+  { type: 'episode', season: 1, episode: 2, title: "Otages en plein ciel", synopsis: "L'équipe est sur la piste d'un objet d'origine inconnue.", duration: "42 min", thumbnail: "/posters/s1e2.webp" },
+  { type: 'episode', season: 1, episode: 3, title: "Gravitonium", synopsis: "Le SHIELD part à la recherche d'un chercheur qui a été enlevé.", duration: "44 min", thumbnail: "/posters/s1e3.webp" },
+  { type: 'episode', season: 1, episode: 4, title: "Dans l'œil de l'espion", synopsis: "Coulson et son équipe sont sur la piste d'une incroyable voleuse.", duration: "43 min", thumbnail: "/posters/s1e4.webp" },
+  { type: 'episode', season: 1, episode: 5, title: "Scorch", synopsis: "L'équipe traque un homme au pouvoir dangereux.", duration: "43 min", thumbnail: "/posters/s1e5.webp" },
+  { type: 'episode', season: 1, episode: 6, title: "Virus alien", synopsis: "Le SHIELD traque un tueur dont les victimes flottent dans l'air.", duration: "42 min", thumbnail: "/posters/s1e6.webp" },
+  { type: 'episode', season: 1, episode: 7, title: "Roulette russe", synopsis: "Des secrets menacent la vie de l'équipe de Coulson.", duration: "43 min", thumbnail: "/posters/s1e7.webp" },
+  { type: 'episode', season: 1, episode: 8, title: "Le dernier guerrier", synopsis: "Un objet asgardien menace un des membres de l'équipe.", duration: "43 min", thumbnail: "/posters/s1e8.webp" },
   { type: 'insert', movieId: 'os-5' }, // Longue vie au roi
-  { type: 'episode', season: 1, episode: 9, title: "Le fantome", synopsis: "Une force mystérieuse hante l'équipe.", duration: "44 min" },
-  { type: 'episode', season: 1, episode: 10, title: "Super soldats", synopsis: "Dans sa guerre contre Centipède, Coulson vit un revirement inattendu.", duration: "42 min" },
-  { type: 'episode', season: 1, episode: 11, title: "Les arcanes du souvenir", synopsis: "Des secrets font surface alors que l'équipe recherche Coulson.", duration: "43 min" },
-  { type: 'episode', season: 1, episode: 12, title: "Les mauvais génies", synopsis: "Coulson et May découvrent des informations-choc sur le passé de Skye.", duration: "44 min" },
-  { type: 'episode', season: 1, episode: 13, title: "Projet Deathlock", synopsis: "L'équipe monte à bord d'un train qui semble en route vers la mort.", duration: "43 min" },
-  { type: 'episode', season: 1, episode: 14, title: "T.A.H.I.T.I.", synopsis: "Coulson passe à l'attaque pour sauver Skye.", duration: "43 min" },
-  { type: 'episode', season: 1, episode: 15, title: "Lorelai", synopsis: "Lorelai attaque Coulson et son équipe.", duration: "44 min" },
-  { type: 'episode', season: 1, episode: 16, title: "Haute trahison", synopsis: "Le S.H.I.E.L.D. est sur la piste de l'Extralucide.", duration: "42 min" },
+  { type: 'episode', season: 1, episode: 9, title: "Le fantome", synopsis: "Une force mystérieuse hante l'équipe.", duration: "44 min", thumbnail: "/posters/s1e9.webp" },
+  { type: 'episode', season: 1, episode: 10, title: "Super soldats", synopsis: "Dans sa guerre contre Centipède, Coulson vit un revirement inattendu.", duration: "42 min", thumbnail: "/posters/s1e10.webp" },
+  { type: 'episode', season: 1, episode: 11, title: "Les arcanes du souvenir", synopsis: "Des secrets font surface alors que l'équipe recherche Coulson.", duration: "43 min", thumbnail: "/posters/s1e11.webp" },
+  { type: 'episode', season: 1, episode: 12, title: "Les mauvais génies", synopsis: "Coulson et May découvrent des informations-choc sur le passé de Skye.", duration: "44 min", thumbnail: "/posters/s1e12.webp" },
+  { type: 'episode', season: 1, episode: 13, title: "Projet Deathlock", synopsis: "L'équipe monte à bord d'un train qui semble en route vers la mort.", duration: "43 min", thumbnail: "/posters/s1e13.webp" },
+  { type: 'episode', season: 1, episode: 14, title: "T.A.H.I.T.I.", synopsis: "Coulson passe à l'attaque pour sauver Skye.", duration: "43 min", thumbnail: "/posters/s1e14.webp" },
+  { type: 'episode', season: 1, episode: 15, title: "Lorelai", synopsis: "Lorelai attaque Coulson et son équipe.", duration: "44 min", thumbnail: "/posters/s1e15.webp" },
+  { type: 'episode', season: 1, episode: 16, title: "Haute trahison", synopsis: "Le S.H.I.E.L.D. est sur la piste de l'Extralucide.", duration: "42 min", thumbnail: "/posters/s1e16.webp" },
   { type: 'insert', movieId: 'm-6' }, // Thor
   { type: 'insert', movieId: 'm-10' }, // Captain America 2 : Le Soldat de l'Hiver
-  { type: 'episode', season: 1, episode: 17, title: "Le retour de l'hydre", synopsis: "Coulson et son équipe n'ont plus personne à qui se fier.", duration: "44 min" },
-  { type: 'episode', season: 1, episode: 18, title: "Protocole éclipse totale", synopsis: "Traquée de toutes parts, l'équipe de Coulson cherche refuge.", duration: "44 min" },
-  { type: 'episode', season: 1, episode: 19, title: "Pour elle", synopsis: "Coulson se précipite à la rescousse de son grand amour.", duration: "44 min" },
-  { type: 'episode', season: 1, episode: 20, title: "Un ennemi si proche", synopsis: "Maria Hill revient pour aider Coulson.", duration: "44 min" },
-  { type: 'episode', season: 1, episode: 21, title: "Mission à l'ancienne", synopsis: "La trahison de Ward et des secrets d'Hydra sont révélés.", duration: "44 min" },
-  { type: 'episode', season: 1, episode: 22, title: "Le commencement de la fin", synopsis: "Coulson et son équipe entrent en guerre contre Garrett et Hydra.", duration: "44 min" },
+  { type: 'episode', season: 1, episode: 17, title: "Le retour de l'hydre", synopsis: "Coulson et son équipe n'ont plus personne à qui se fier.", duration: "44 min", thumbnail: "/posters/s1e17.webp" },
+  { type: 'episode', season: 1, episode: 18, title: "Protocole éclipse totale", synopsis: "Traquée de toutes parts, l'équipe de Coulson cherche refuge.", duration: "44 min", thumbnail: "/posters/s1e18.webp" },
+  { type: 'episode', season: 1, episode: 19, title: "Pour elle", synopsis: "Coulson se précipite à la rescousse de son grand amour.", duration: "44 min", thumbnail: "/posters/s1e19.webp" },
+  { type: 'episode', season: 1, episode: 20, title: "Un ennemi si proche", synopsis: "Maria Hill revient pour aider Coulson.", duration: "44 min", thumbnail: "/posters/s1e20.webp" },
+  { type: 'episode', season: 1, episode: 21, title: "Mission à l'ancienne", synopsis: "La trahison de Ward et des secrets d'Hydra sont révélés.", duration: "44 min", thumbnail: "/posters/s1e21.webp" },
+  { type: 'episode', season: 1, episode: 22, title: "Le commencement de la fin", synopsis: "Coulson et son équipe entrent en guerre contre Garrett et Hydra.", duration: "44 min", thumbnail: "/posters/s1e3.webp" },
   { type: 'episode', season: 2, episode: 1, title: "Les héros de l'ombre", synopsis: "Coulson et son équipe tentent de relancer le SHIELD.", duration: "44 min", thumbnail: "" },
   { type: 'episode', season: 2, episode: 2, title: "La chasse", synopsis: "Coulson tente une action risquée pour sauver son équipe.", duration: "44 min", thumbnail: "" },
   { type: 'episode', season: 2, episode: 3, title: "L'homme de glace", synopsis: "Coulson et son équipe traquent une vieille connaissance.", duration: "44 min", thumbnail: "" },
@@ -163,7 +163,7 @@ export const aosTimeline: AosTimelineItem[] = [
 
 
 export const aosSeasonLinks: Record<number, string> = {
-  1: "https://www.disneyplus.com/fr-fr/browse/entity-63516dff-91f8-4deb-b110-d22552f329cb",
+  1: "https://www.disneyplus.com/fr-fr/play/4cf1b621-9af1-40d2-989d-3b1df555b062",
   3.5: "https://youtube.com/playlist?list=PLDe0CguuqcMBVtZJk0iCNoSblixvAt4BY&si=XScOxBUriMpGuMu5",
 };
 
