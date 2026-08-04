@@ -163,7 +163,7 @@ export const aosTimeline: AosTimelineItem[] = [
 
 
 export const aosSeasonLinks: Record<number, string> = {
-  1: "https://www.disneyplus.com/fr-fr/play/4cf1b621-9af1-40d2-989d-3b1df555b062",
+  1: "",
   3.5: "https://youtube.com/playlist?list=PLDe0CguuqcMBVtZJk0iCNoSblixvAt4BY&si=XScOxBUriMpGuMu5",
 };
 
