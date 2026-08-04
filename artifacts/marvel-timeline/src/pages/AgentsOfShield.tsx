@@ -51,9 +51,6 @@ function EpisodeRow({ season, episode, title, synopsis, duration, thumbnail }: {
   );
 }
 
-
-
-
 export default function AgentsOfShield() {
   const [selectedMovie, setSelectedMovie] = React.useState<typeof marvelData[number] | null>(null);
   useEffect(() => {
