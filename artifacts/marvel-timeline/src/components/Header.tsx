@@ -3,12 +3,9 @@ import { Clock, Film } from 'lucide-react';
 import { cn } from '../lib/utils';
 import { Link } from 'wouter';
 
-interface HeaderProps {
-  viewMode: 'chrono' | 'release';
-  setViewMode: (mode: 'chrono' | 'release') => void;
-}
+interface HeaderProps {}
 
-export function Header({ viewMode, setViewMode }: HeaderProps) {
+export function Header({}: HeaderProps) {
   const filters = [
     { id: 'all', label: 'Tout' },
     { id: 'film-u616', label: 'Films MCU', color: 'bg-orange-500 text-white' },
@@ -44,38 +41,8 @@ export function Header({ viewMode, setViewMode }: HeaderProps) {
               Multivers
             </Link>
             <Link href="/agents-of-shield" className="px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest bg-yellow-500 text-black whitespace-nowrap border-2 border-transparent shadow-lg hover:scale-105 transition-all">
-              Agents of S.H.I.E.L.D.
+              A.O.S
             </Link>
-          </div>
-
-
-          
-          {/* Mode Toggle */}
-          <div className="flex bg-muted/50 p-1 rounded-lg border border-border shrink-0">
-            <button
-              onClick={() => setViewMode('chrono')}
-              className={cn(
-                "flex items-center gap-2 px-4 py-2 rounded-md text-sm font-semibold transition-all duration-300",
-                viewMode === 'chrono' 
-                  ? "bg-card text-primary shadow-sm ring-1 ring-primary/30" 
-                  : "text-muted-foreground hover:text-white"
-              )}
-            >
-              <Clock className="w-4 h-4" />
-              Chrono
-            </button>
-            <button
-              onClick={() => setViewMode('release')}
-              className={cn(
-                "flex items-center gap-2 px-4 py-2 rounded-md text-sm font-semibold transition-all duration-300",
-                viewMode === 'release' 
-                  ? "bg-card text-primary shadow-sm ring-1 ring-primary/30" 
-                  : "text-muted-foreground hover:text-white"
-              )}
-            >
-              <Film className="w-4 h-4" />
-              Sortie
-            </button>
           </div>
           
         </div>

@@ -75,7 +75,7 @@ export default function AgentsOfShield() {
 
   return (
     <div className="min-h-screen bg-background text-foreground flex flex-col">
-      <Header viewMode="chrono" setViewMode={() => {}} />
+      <Header />
 
       <main className="flex-1 max-w-4xl w-full mx-auto px-4 sm:px-6 py-32">
         <a href="/" className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-white transition-colors mb-6">

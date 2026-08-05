@@ -15,6 +15,26 @@ const STUDIO_LABELS: Record<Studio, string> = {
   universal: 'Universal',
 };
 
+function ViewModeToggle({ mode, setMode }: { mode: 'chrono' | 'release'; setMode: (m: 'chrono' | 'release') => void }) {
+  return (
+    <div className="inline-flex rounded-full border border-border overflow-hidden mb-4">
+      <button
+        onClick={() => setMode('chrono')}
+        className={`px-4 py-1.5 text-xs font-bold uppercase tracking-widest ${mode === 'chrono' ? 'bg-red-500 text-white' : 'bg-transparent text-muted-foreground'}`}
+      >
+        Chrono
+      </button>
+      <button
+        onClick={() => setMode('release')}
+        className={`px-4 py-1.5 text-xs font-bold uppercase tracking-widest ${mode === 'release' ? 'bg-red-500 text-white' : 'bg-transparent text-muted-foreground'}`}
+      >
+        Sortie
+      </button>
+    </div>
+  );
+}
+
+
 // Déduit studio + sous-catégorie : explicite pour les nouveaux films,
 // via la catégorie existante pour Spider-Man / X-Men déjà en base.
 function getStudio(movie: MarvelEntry): Studio | null {
@@ -48,6 +68,8 @@ const SUBCATEGORY_ORDER: Record<Studio, string[]> = {
 };
 
 export default function PreMCU() {
+  const [xmenViewMode, setXmenViewMode] = React.useState<'chrono' | 'release'>('chrono');
+
   const [selectedMovie, setSelectedMovie] = React.useState<MarvelEntry | null>(null);
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -75,7 +97,7 @@ export default function PreMCU() {
 
   return (
     <div className="min-h-screen bg-background text-foreground flex flex-col">
-      <Header viewMode="chrono" setViewMode={() => {}} />
+      <Header />
 
       <main className="flex-1 max-w-[1600px] w-full mx-auto px-4 sm:px-6 lg:px-8 py-32">
         <a href="/" className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-white transition-colors mb-6">
@@ -106,22 +128,29 @@ export default function PreMCU() {
 
                 <div className="space-y-10">
                   {subCats.map((subCat) => (
-                    <div key={subCat}>
-                      <h3 className="text-sm font-bold uppercase tracking-widest text-muted-foreground mb-4">
-                        {subCat}
-                      </h3>
-                      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 sm:gap-6">
-                        {subMap.get(subCat)!.map((movie, index) => (
-                          <MovieCard
-                            key={movie.id}
-                            movie={movie}
-                            index={index}
-                            viewMode="chrono"
-                            onOpenInfo={() => setSelectedMovie(movie)}
-                            badgeLabelOverride={STUDIO_LABELS[studio].toUpperCase()}
-                          />
-                        ))}
-                      </div>
+                      <div key={subCat}>
+                        <h3 className="text-sm font-bold uppercase tracking-widest text-muted-foreground mb-4">
+                          {subCat}
+                        </h3>
+                        {subCat === 'X-Men' && (
+                          <ViewModeToggle mode={xmenViewMode} setMode={setXmenViewMode} />
+                        )}
+                        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 sm:gap-6">
+                          {(subCat === 'X-Men'
+                            ? [...subMap.get(subCat)!].sort((a, b) => xmenViewMode === 'chrono' ? a.chronologicalOrder - b.chronologicalOrder : a.releaseOrder - b.releaseOrder)
+                            : subMap.get(subCat)!
+                          ).map((movie, index) => (
+                            <MovieCard
+                              key={movie.id}
+                              movie={movie}
+                              index={index}
+                              viewMode="chrono"
+                              onOpenInfo={() => setSelectedMovie(movie)}
+                              badgeLabelOverride={STUDIO_LABELS[studio].toUpperCase()}
+                            />
+                          ))}
+                        </div>
+                      
                     </div>
                   ))}
                 </div>
