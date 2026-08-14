@@ -150,15 +150,29 @@ export function MovieModal({ movie, onClose }: MovieModalProps) {
           </div>
 
           <div className="mt-auto pt-6 border-t border-border">
-            <a 
-              href={movie.streamingUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group flex items-center justify-center gap-3 w-full bg-primary hover:bg-primary/90 text-white font-bold text-lg py-4 px-8 rounded-xl transition-all shadow-[0_0_20px_rgba(225,29,72,0.3)] hover:shadow-[0_0_30px_rgba(225,29,72,0.6)]"
-            >
-              <Play className="w-5 h-5 fill-current group-hover:scale-110 transition-transform" />
-              {movie.streamingPlatform ? `Voir sur ${movie.streamingPlatform}` : 'Voir le contenu'}
-            </a>
+            <div className="flex gap-3 flex-wrap">
+              <a
+                href={movie.streamingUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-primary text-primary-foreground font-bold text-sm uppercase tracking-widest shadow-[0_0_15px_rgba(225,29,72,0.4)] hover:scale-105 transition-transform"
+              >
+                <Play className="w-4 h-4" />
+                {movie.streamingPlatform ? `Voir sur ${movie.streamingPlatform}` : 'Voir le contenu'}
+              </a>
+              {movie.streamingUrl2 && (
+                <a
+                  href={movie.streamingUrl2}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-primary text-primary-foreground font-bold text-sm uppercase tracking-widest shadow-[0_0_15px_rgba(225,29,72,0.4)] hover:scale-105 transition-transform"
+                >
+                  <Play className="w-4 h-4" />
+                  {movie.streamingPlatform2 ? `Voir sur ${movie.streamingPlatform2}` : 'Voir le contenu'}
+                </a>
+              )}
+            </div>
+
           </div>
 
         </div>

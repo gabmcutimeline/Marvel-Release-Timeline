@@ -43,6 +43,10 @@ export function Header({}: HeaderProps) {
             <Link href="/agents-of-shield" className="px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest bg-yellow-500 text-black whitespace-nowrap border-2 border-transparent shadow-lg hover:scale-105 transition-all">
               A.O.S
             </Link>
+            <Link href="/connexions" className="px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest bg-purple-600 text-white whitespace-nowrap border-2 border-transparent shadow-lg hover:scale-105 transition-all">
+              Connexions
+            </Link>
+
           </div>
           
         </div>

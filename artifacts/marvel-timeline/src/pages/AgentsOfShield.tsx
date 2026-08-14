@@ -6,8 +6,15 @@ import { MovieModal } from '../components/MovieModal';
 import { useResolvedPoster } from '../hooks/use-resolved-poster';
 
 // Carte "film inséré" dans la liste — même esprit que les épisodes mais cliquable
-function InsertedMovieCard({ movie, onOpenInfo }: { movie: typeof marvelData[number]; onOpenInfo: () => void }) {
+const IMPORTANCE_STYLES: Record<string, { label: string; className: string }> = {
+  important: { label: 'IMPORTANT', className: 'bg-red-500 text-white' },
+  recommande: { label: 'RECOMMANDÉ', className: 'bg-amber-500 text-black' },
+  'clin-oeil': { label: "CLIN D'ŒIL", className: 'bg-slate-500 text-white' },
+};
+
+function InsertedMovieCard({ movie, importance, onOpenInfo }: { movie: typeof marvelData[number]; importance?: string; onOpenInfo: () => void }) {
   const posterUrl = useResolvedPoster(movie.title, movie.posterUrl);
+  const badge = importance ? IMPORTANCE_STYLES[importance] : null;
   return (
     <button
       onClick={onOpenInfo}
@@ -15,8 +22,15 @@ function InsertedMovieCard({ movie, onOpenInfo }: { movie: typeof marvelData[num
     >
       <img src={posterUrl} alt={movie.title} className="w-24 h-36 object-cover rounded shrink-0" />
       <div>
-        <div className="text-[10px] font-bold uppercase tracking-widest text-orange-400 mb-1">
-          Film — {movie.releaseDate}
+        <div className="flex items-center gap-2 mb-1">
+          <div className="text-[10px] font-bold uppercase tracking-widest text-orange-400">
+            Film — {movie.releaseDate}
+          </div>
+          {badge && (
+            <span className={`text-[9px] font-bold uppercase tracking-widest px-1.5 py-0.5 rounded-full ${badge.className}`}>
+              {badge.label}
+            </span>
+          )}
         </div>
         <div className="text-lg font-bold text-white mb-1">{movie.title}</div>
         <div className="text-sm text-muted-foreground line-clamp-2">{movie.synopsis}</div>
@@ -26,7 +40,7 @@ function InsertedMovieCard({ movie, onOpenInfo }: { movie: typeof marvelData[num
 }
 
 // Une ligne épisode, style Disney+
-function EpisodeRow({ season, episode, title, synopsis, duration, thumbnail, streamingUrl }: { season: number; episode: number; title: string; synopsis?: string; duration?: string; thumbnail?: string; streamingUrl?: string }) {
+function EpisodeRow({ season, episode, title, synopsis, duration, thumbnail, streamingUrl }: { season: number; episode: number; title: string; synopsis?: string; duration?: string; thumbnail?: string; streamingUrl?: string; }) {
   const link = streamingUrl || aosSeasonLinks[season];
   return (
     <a
@@ -36,7 +50,7 @@ function EpisodeRow({ season, episode, title, synopsis, duration, thumbnail, str
       className="w-full flex gap-4 items-start border-l-4 border-transparent p-3 hover:bg-white/5 transition-colors cursor-pointer"
     >
       {thumbnail ? (
-        <img src={thumbnail} alt={title} className="w-24 h-14 shrink-0 rounded object-cover" />
+        <img src={thumbnail} alt={title} className="w-48 h-28 shrink-0 rounded object-cover" />
       ) : (
         <div className="w-24 h-14 shrink-0 rounded bg-muted/50 flex items-center justify-center text-xs font-bold text-muted-foreground">
           Ép. {episode}
@@ -118,6 +132,7 @@ export default function AgentsOfShield() {
               <InsertedMovieCard
                 key={movie.id + index}
                 movie={movie}
+                importance={item.importance}
                 onOpenInfo={() => setSelectedMovie(movie)}
               />
             );

@@ -39,7 +39,7 @@ function ViewModeToggle({ mode, setMode }: { mode: 'chrono' | 'release'; setMode
 // via la catégorie existante pour Spider-Man / X-Men déjà en base.
 function getStudio(movie: MarvelEntry): Studio | null {
   if (movie.studio) return movie.studio;
-  if (['spider-maguire', 'spider-garfield', 'sony-spider', 'spider-animation'].includes(movie.category)) return 'sony';
+  if (['spider-maguire', 'spider-garfield', 'sony-spider', 'spider-noir', 'spider-animation'].includes(movie.category)) return 'sony';
   if (movie.category === 'x-men' || movie.category === 'x-men-animation') return 'fox';
   return null;
 }
@@ -53,6 +53,7 @@ function getSubCategory(movie: MarvelEntry): string {
     case 'spider-maguire': return 'Raimi / Maguire';
     case 'spider-garfield': return 'Webb / Garfield';
     case 'sony-spider': return "SSU (Sony's Spider-Man Universe)";
+    case 'spider-noir': return "Spider Noir";
     case 'spider-animation': return 'Animation (Into / Across)';
     default: return 'Autres';
   }
@@ -61,7 +62,7 @@ function getSubCategory(movie: MarvelEntry): string {
 // Ordre d'affichage des sous-catégories par studio
 const SUBCATEGORY_ORDER: Record<Studio, string[]> = {
   fox: ['X-Men', 'Daredevil & Elektra', '4 Fantastiques'],
-  sony: ['Raimi / Maguire', 'Webb / Garfield', 'Animation (Into / Across)', "SSU (Sony's Spider-Man Universe)", 'Ghost Rider'],
+  sony: ['Raimi / Maguire', 'Webb / Garfield', 'Animation (Into / Across)', 'Spider Noir', "SSU (Sony's Spider-Man Universe)", 'Ghost Rider'],
   lionsgate: ['Punisher & Man-Thing'],
   'new-line': ['Blade'],
   universal: ['Hulk'],
@@ -146,7 +147,7 @@ export default function PreMCU() {
                               index={index}
                               viewMode="chrono"
                               onOpenInfo={() => setSelectedMovie(movie)}
-                              badgeLabelOverride={STUDIO_LABELS[studio].toUpperCase()}
+                              hideBadge
                             />
                           ))}
                         </div>

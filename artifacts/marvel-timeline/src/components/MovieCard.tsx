@@ -11,6 +11,7 @@ interface MovieCardProps {
   viewMode: 'chrono' | 'release';
   onOpenInfo: () => void;
   badgeLabelOverride?: string;
+  hideBadge?: boolean;
 }
 
 const getCategoryStyle = (category: EntryCategory) => {
@@ -18,23 +19,23 @@ const getCategoryStyle = (category: EntryCategory) => {
     case 'film-u616': return { borderClass: 'border-orange-500', shadowClass: 'hover:shadow-[0_0_20px_rgba(249,115,22,0.4)]', badgeLabel: 'FILM MCU', badgeColor: 'bg-orange-500 text-white' };
     case 'serie-u616': return { borderClass: 'border-purple-500', shadowClass: 'hover:shadow-[0_0_20px_rgba(168,85,247,0.4)]', badgeLabel: 'SÉRIE MCU', badgeColor: 'bg-purple-500 text-white' };
       case 'specials': return { borderClass: 'border-purple-500', shadowClass: 'hover:shadow-[0_0_20px_rgba(168,85,247,0.4)]', badgeLabel: 'SPECIAL', badgeColor: 'bg-purple-500 text-black' };
-    case 'serie-netflix': return { borderClass: 'border-teal-600', shadowClass: 'hover:shadow-[0_0_20px_rgba(13,148,136,0.4)]', badgeLabel: 'NETFLIX', badgeColor: 'bg-teal-600 text-white' };
-    case 'serie-multivers': return { borderClass: 'border-cyan-500', shadowClass: 'hover:shadow-[0_0_20px_rgba(6,182,212,0.4)]', badgeLabel: 'MULTIVERS', badgeColor: 'bg-cyan-500 text-black' };
+    case 'serie-netflix': return { borderClass: 'border-red-900', shadowClass: 'hover:shadow-[0_0_20px_rgba(13,148,136,0.4)]', badgeLabel: 'NETFLIX', badgeColor: 'bg-red-900 text-white' };
+    case 'serie-multivers': return { borderClass: 'border-green-700', shadowClass: 'hover:shadow-[0_0_20px_rgba(6,182,212,0.4)]', badgeLabel: 'MULTIVERS', badgeColor: 'bg-green-700 text-black' };
     case 'serie-films-canon': return { borderClass: 'border-amber-500', shadowClass: 'hover:shadow-[0_0_20px_rgba(245,158,11,0.4)]', badgeLabel: 'SHIELD', badgeColor: 'bg-amber-500 text-black' };
     case 'serie-non-canon': return { borderClass: 'border-pink-500', shadowClass: 'hover:shadow-[0_0_20px_rgba(236,72,153,0.4)]', badgeLabel: 'NON CANON', badgeColor: 'bg-pink-500 text-white' };
     case 'one-shot': return { borderClass: 'border-orange-500', shadowClass: 'hover:shadow-[0_0_20px_rgba(234,179,8,0.4)]', badgeLabel: 'ONE SHOT', badgeColor: 'bg-orange-500 text-black' };
-    case 'spider-maguire': return { borderClass: 'border-green-500', shadowClass: 'hover:shadow-[0_0_20px_rgba(34,197,94,0.4)]', badgeLabel: 'MAGUIRE', badgeColor: 'bg-green-500 text-white' };
-    case 'spider-garfield': return { borderClass: 'border-blue-500', shadowClass: 'hover:shadow-[0_0_20px_rgba(59,130,246,0.4)]', badgeLabel: 'GARFIELD', badgeColor: 'bg-blue-500 text-white' };
-    case 'spider-animation': return { borderClass: 'border-orange-400', shadowClass: 'hover:shadow-[0_0_20px_rgba(251,146,60,0.4)]', badgeLabel: 'ANIMÉ', badgeColor: 'bg-orange-400 text-black' };
-    case 'sony-spider': return { borderClass: 'border-yellow-400', shadowClass: 'hover:shadow-[0_0_20px_rgba(250,204,21,0.4)]', badgeLabel: 'SONY', badgeColor: 'bg-yellow-400 text-black' };
-    case 'x-men': return { borderClass: 'border-slate-200', shadowClass: 'hover:shadow-[0_0_20px_rgba(226,232,240,0.4)]', badgeLabel: 'X-MEN', badgeColor: 'bg-slate-200 text-black' };
-    case 'x-men-animation': return { borderClass: 'border-slate-400', shadowClass: 'hover:shadow-[0_0_20px_rgba(148,163,184,0.4)]', badgeLabel: 'X-MEN ANIMÉ', badgeColor: 'bg-slate-400 text-white' };
-    case 'post-credit': return { borderClass: 'border-red-500', shadowClass: 'hover:shadow-[0_0_20px_rgba(225,29,72,0.4)]', badgeLabel: 'POST-CRÉDIT', badgeColor: 'bg-red-500 text-white' };
+      case 'spider-maguire': return { borderClass: 'border-green-500', shadowClass: 'hover:shadow-[0_0_20px_rgba(34,197,94,0.4)]', badgeLabel: 'MAGUIRE', badgeColor: 'bg-green-500 text-white' };
+      case 'spider-garfield': return { borderClass: 'border-blue-500', shadowClass: 'hover:shadow-[0_0_20px_rgba(59,130,246,0.4)]', badgeLabel: 'GARFIELD', badgeColor: 'bg-blue-500 text-white' };
+      case 'spider-animation': return { borderClass: 'border-orange-400', shadowClass: 'hover:shadow-[0_0_20px_rgba(251,146,60,0.4)]', badgeLabel: 'ANIMÉ', badgeColor: 'bg-orange-400 text-black' };
+      case 'sony-spider': return { borderClass: 'border-yellow-400', shadowClass: 'hover:shadow-[0_0_20px_rgba(250,204,21,0.4)]', badgeLabel: 'SONY', badgeColor: 'bg-yellow-400 text-black' };
+      case 'x-men': return { borderClass: 'border-slate-200', shadowClass: 'hover:shadow-[0_0_20px_rgba(226,232,240,0.4)]', badgeLabel: 'X-MEN', badgeColor: 'bg-slate-200 text-black' };
+      case 'x-men-animation': return { borderClass: 'border-slate-400', shadowClass: 'hover:shadow-[0_0_20px_rgba(148,163,184,0.4)]', badgeLabel: 'X-MEN ANIMÉ', badgeColor: 'bg-slate-400 text-white' };
+      case 'post-credit': return { borderClass: 'border-red-500', shadowClass: 'hover:shadow-[0_0_20px_rgba(225,29,72,0.4)]', badgeLabel: 'POST-CRÉDIT', badgeColor: 'bg-red-500 text-white' };
     default: return { borderClass: 'border-border', shadowClass: '', badgeLabel: 'MARVEL', badgeColor: 'bg-primary text-white' };
   }
 };
 
-export function MovieCard({ movie, index, viewMode, onOpenInfo, badgeLabelOverride }: MovieCardProps) {
+  export function MovieCard({ movie, index, viewMode, onOpenInfo, badgeLabelOverride, hideBadge }: MovieCardProps) {
   const displayOrder = viewMode === 'chrono' ? movie.chronologicalOrder : movie.releaseOrder;
   const style = getCategoryStyle(movie.category);
   const posterUrl = useResolvedPoster(movie.title, movie.posterUrl);
@@ -58,12 +59,14 @@ export function MovieCard({ movie, index, viewMode, onOpenInfo, badgeLabelOverri
       </div>
 
       {/* Universe/Category Badge */}
-      <div className={cn(
-        "absolute top-2 right-2 z-20 text-[10px] uppercase font-bold px-2 py-1 rounded tracking-wider shadow-sm",
-        style.badgeColor
-      )}>
-        {badgeLabelOverride || style.badgeLabel}
-      </div>
+      {!hideBadge && (
+        <div className={cn(
+          "absolute top-2 right-2 z-20 text-[10px] uppercase font-bold px-2 py-1 rounded tracking-wider shadow-sm",
+          style.badgeColor
+        )}>
+          {badgeLabelOverride || style.badgeLabel}
+        </div>
+      )}
       {/* Viewing Note Banner */}
       {movie.viewingNote && (
         <div className="absolute bottom-0 left-0 right-0 z-20 bg-amber-500 text-black text-[11px] font-bold px-2 py-1.5 text-center leading-tight">
