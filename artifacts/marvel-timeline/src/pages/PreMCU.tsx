@@ -3,6 +3,7 @@ import { marvelData, MarvelEntry } from '../data/marvel-data';
 import { Header } from '../components/Header';
 import { MovieCard } from '../components/MovieCard';
 import { MovieModal } from '../components/MovieModal';
+import { usePinchColumns } from '../hooks/use-pinch-columns';
 
 
 type Studio = 'sony' | 'fox' | 'lionsgate' | 'new-line' | 'universal';
@@ -61,7 +62,7 @@ function getSubCategory(movie: MarvelEntry): string {
 
 // Ordre d'affichage des sous-catégories par studio
 const SUBCATEGORY_ORDER: Record<Studio, string[]> = {
-  fox: ['X-Men', 'Daredevil & Elektra', '4 Fantastiques'],
+  fox: ['X-Men', 'Daredevil & Elektra', '4 Fantastiques', '4 Fantastiques Reboot'],
   sony: ['Raimi / Maguire', 'Webb / Garfield', 'Animation (Into / Across)', 'Spider Noir', "SSU (Sony's Spider-Man Universe)", 'Ghost Rider'],
   lionsgate: ['Punisher & Man-Thing'],
   'new-line': ['Blade'],
@@ -72,6 +73,7 @@ export default function PreMCU() {
   const [xmenViewMode, setXmenViewMode] = React.useState<'chrono' | 'release'>('chrono');
 
   const [selectedMovie, setSelectedMovie] = React.useState<MarvelEntry | null>(null);
+  const { cols: pinchCols, touchHandlers, style: touchStyle } = usePinchColumns(2, 2, 5);
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -106,7 +108,7 @@ export default function PreMCU() {
         </a>
 
         <h1 className="text-3xl sm:text-4xl font-display font-bold text-white tracking-widest mb-4">
-          FILMS MARVEL HORS-MCU
+          FILMS MARVEL MULTIVERS
         </h1>
         <p className="text-sm text-muted-foreground mb-12">
           Les films produits avant le rachat des droits par Disney, classés par studio.
@@ -136,7 +138,11 @@ export default function PreMCU() {
                         {subCat === 'X-Men' && (
                           <ViewModeToggle mode={xmenViewMode} setMode={setXmenViewMode} />
                         )}
-                        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 sm:gap-6">
+                        <div
+                          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 sm:gap-6"
+                          style={touchStyle}
+                          {...touchHandlers}
+                        >
                           {(subCat === 'X-Men'
                             ? [...subMap.get(subCat)!].sort((a, b) => xmenViewMode === 'chrono' ? a.chronologicalOrder - b.chronologicalOrder : a.releaseOrder - b.releaseOrder)
                             : subMap.get(subCat)!

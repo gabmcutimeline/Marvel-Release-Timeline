@@ -4,6 +4,7 @@ import { Header } from '../components/Header';
 import { MovieCard, PostCreditCard } from '../components/MovieCard';
 import { MovieModal } from '../components/MovieModal';
 import { motion, AnimatePresence } from 'framer-motion';
+import { usePinchColumns } from '../hooks/use-pinch-columns';
 
 
 
@@ -100,6 +101,7 @@ export default function Home() {
   const [mcuViewMode, setMcuViewMode] = React.useState<'chrono' | 'release'>('chrono');
   const [categoryFilters, setCategoryFilters] = React.useState<Set<string>>(new Set());
   const [filterOpen, setFilterOpen] = React.useState(false);
+  const { cols: mcuCols, touchHandlers, style: touchStyle } = usePinchColumns(2, 2, 5);
 
 
   const [activeFilter, setActiveFilter] = React.useState<string>('all');
@@ -244,7 +246,12 @@ export default function Home() {
                               </span>
                             )}
                           </div>
-                          <motion.div layout className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 sm:gap-6">
+                            <motion.div
+                              layout
+                              className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 sm:gap-6"
+                              style={touchStyle}
+                              {...touchHandlers}
+                            >
                             <AnimatePresence mode="popLayout">
                               {movies.map((movie, index) => (
                                 <MovieCard
@@ -262,10 +269,12 @@ export default function Home() {
                     </div>
                   ) : (
                     // --- Mode Chrono : liste continue, comme avant ---
-                    <motion.div 
-                      layout
-                      className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 sm:gap-6"
-                    >
+                      <motion.div 
+                        layout
+                        className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 sm:gap-6"
+                        style={touchStyle}
+                        {...touchHandlers}
+                      >
                       <AnimatePresence mode="popLayout">
                         {mcuData.map((movie, index) => (
                           <MovieCard 
